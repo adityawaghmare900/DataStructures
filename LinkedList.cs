@@ -4,32 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructure
+namespace SimpleLinkedList_UC1
 {
     public class LinkedList
     {
         public Node head;
-
         public void Add(int data)
         {
             Node node = new Node(data);
-            if(this.head == null)
+            if (this.head == null)
             {
-                head = node;
+                this.head = node;
             }
             else
             {
                 Node temp = head;
-                while(temp.Next!= null)
+                while (temp.next != null)
                 {
-                    temp = temp.Next;   
+                    temp = temp.next;
                 }
-                temp.Next=node;
+                temp.next = node;
             }
-            Console.WriteLine("{0} is inserted into the lined list", +data);
-
+            Console.WriteLine("{0} inserted into linked list", node.data);
         }
-       
 
+        public void display()
+        {
+            Node temp = this.head;
+            if (temp == null)
+            {
+                Console.WriteLine("LinkedList is empty");
+                return;
+            }
+            while (temp != null)
+            {
+                Console.Write(temp.data + " ");
+                temp = temp.next;
+            }
+        }
     }
 }
